@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    ".direnv/": true,
+    "result": true,
+  },
+  "prettier.configPath": "prettierrc.yaml",
+  "prettier.ignorePath": ".prettierignore",
+}
