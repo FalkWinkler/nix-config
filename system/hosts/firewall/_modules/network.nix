@@ -31,7 +31,7 @@
         };
         "10-vnet11" = {
           matchConfig.MACAddress = "BC:24:11:0C:65:11";
-          linkConfig.Name = "vnet11"
+          linkConfig.Name = "vnet11";
         };
 
     }; 
