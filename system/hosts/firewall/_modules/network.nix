@@ -35,5 +35,19 @@
         };
 
     }; 
+
+    networks = {
+      "20-vnet10" = {
+        matchConfig.Name = "vnet10";
+        address = [ "10.11.0.10/24" ];
+        linkConfig.RequiredForOnline = "routable";
+      };
+      "20-vnet11" = {
+        matchConfig.Name = "vnet11";
+        address = [ "10.10.0.10/24" ];
+        linkConfig.RequiredForOnline = "routable";
+      };
+    };
   };
+  
 }
