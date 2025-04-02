@@ -1,0 +1,44 @@
+{
+  "extends": [
+    "github>budimanjojo/renovate-config:default.json5"
+  ],
+  "username": "budimanjojo-bot[bot]",
+  "gitAuthor": "budimanjojo-bot <111944664+budimanjojo-bot[bot]@users.noreply.github.com>",
+  "repositories": ["budimanjojo/nix-config"],
+  "automerge": true,
+  "ignoreTests": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": [
+      "after 1am and before 3am"
+    ]
+  },
+  "nix": {
+    "enabled": true
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["chezmoi\\/\\.chezmoiscripts\\/.+\\.sh\\.tmpl$"],
+      "matchStrings": [
+        "# renovate: depName=(?<depName>.*) datasource=(?<datasource>.*)\\n\\s*current_\\w+_version=(?<currentValue>.+)\\b"
+      ]
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "^system/.*\\.nix$"
+      ],
+      "matchStrings": [
+        "image *= *\"(?<depName>.*?):(?<currentValue>.*?)(@(?<currentDigest>sha256:[a-f0-9]+))?\""
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDepNames": "wez/wezterm",
+      "versioning": "regex:^(?<major>\\d{4})(?<minor>\\d{2})(?<patch>\\d{2})-(?<build>\\d+)-(?<revision>.+)$"
+    }
+  ]
+}

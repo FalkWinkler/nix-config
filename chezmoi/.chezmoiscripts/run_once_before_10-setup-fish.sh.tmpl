@@ -1,0 +1,32 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+set -eufo pipefail
+
+echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
+
+set_default_shell() {
+  local expected_default="{{ .chezmoi.homeDir }}/.nix-profile/bin/fish"
+  local current_default
+
+  current_default=$(grep "^{{ .chezmoi.username }}:" /etc/passwd | cut -d: -f7)
+
+  if [ ! -x "$expected_default" ]; then
+    echo "No fish binary found in $expected_default, skip changing default shell"
+    return
+  fi
+
+  if [ "$current_default" != "$expected_default" ]; then
+    echo "Changing default shell to fish"
+    if ! grep -wq "$expected_default" /etc/shells; then
+      echo "Adding $expected_default to /etc/shells"
+      echo "$expected_default" | sudo tee -a /etc/shells >/dev/null
+    fi
+    chsh -s "$expected_default"
+  fi
+}
+
+# Set fish as default shell
+set_default_shell
+
+echo -e "\0033[0;32m>>>>> Finish Setting Up Fish Shell <<<<<\033[0m"
+{{ end -}}
