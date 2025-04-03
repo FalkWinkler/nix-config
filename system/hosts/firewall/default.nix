@@ -2,7 +2,7 @@
 {
   imports = [
     ./disk-config.nix
-    #./hardware-configuration.nix
+    ./hardware-configuration.nix
     ./_modules # host specific modules
     ../../profiles/server.nix
   ];
