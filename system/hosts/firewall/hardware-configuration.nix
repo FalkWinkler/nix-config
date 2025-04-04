@@ -15,20 +15,12 @@
     kernelModules = [ "kvm-intel" ];  
   };
 
-  # fileSystems = {
-  #   "/boot" = {
-  #     device = "/dev/disk/by-uuid/C241-FDB6";
-  #     fsType = "vfat";
-  #     options = [
-  #       "fmask=0022"
-  #       "dmask=0022"
-  #     ];
-  #   };
-  #   "/" = {
-  #     device = "/dev/disk/by-uuid/c85a6137-9a10-4e79-a5a5-86368db22114";
-  #     fsType = "ext4";
-  #   };
-  # };
+    # Default filesystem
+    fileSystems."/" = lib.mkDefault {
+      device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0";
+      autoResize = true;
+      fsType = "ext4";
+    };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

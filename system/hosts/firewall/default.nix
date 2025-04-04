@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./disk-config.nix
+    # ./disk-config.nix
     ./hardware-configuration.nix
     ./_modules # host specific modules
     ../../profiles/server.nix
