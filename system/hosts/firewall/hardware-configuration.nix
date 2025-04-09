@@ -15,12 +15,18 @@
     kernelModules = [ "kvm-intel" ];  
   };
 
-    # Default filesystem
-    fileSystems."/" = lib.mkDefault {
-      device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0";
-      autoResize = true;
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/316f51c3-5fa9-461e-bc36-213542ac45b8";
       fsType = "ext4";
     };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/A1D3-E101";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

@@ -26,7 +26,7 @@ in
 
     networking.hostName = hostname;
 
-    time.timeZone = "Asia/Jakarta";
+    time.timeZone = "Europe/Berlin";
 
     security = {
       sudo.wheelNeedsPassword = false;

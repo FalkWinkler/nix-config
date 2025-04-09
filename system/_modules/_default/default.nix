@@ -12,7 +12,7 @@ in
   config = {
     networking.hostName = hostname;
 
-    time.timeZone = "Asia/Jakarta";
+    time.timeZone = "Europe/Berlin";
 
     security = {
       sudo.wheelNeedsPassword = false;
@@ -27,7 +27,7 @@ in
     };
 
     # do not change unless you know what you are doing
-    system.stateVersion = "23.11";
+    system.stateVersion = "24.11";
     documentation.nixos.enable = false;
   };
 }

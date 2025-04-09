@@ -13,7 +13,7 @@
     # ./services/powerdns
     # ./services/rsyslogd
 
-    ./network.nix
+    #./network.nix
     #./podman.nix
     #./wireguard.nix
   ];

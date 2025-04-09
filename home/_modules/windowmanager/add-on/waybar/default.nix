@@ -44,7 +44,7 @@ let
     clock = {
       format = "{:%A, %d %b %I:%M%p}";
       interval = 1;
-      timezone = "Asia/Jakarta";
+      timezone = "Europe/Berlin";
       tooltip = false;
     };
     "custom/power" = {
